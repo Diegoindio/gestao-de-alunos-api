@@ -11,7 +11,7 @@ info:
 
     Toda a API (exceto o login) é protegida por autenticação via **JWT**. Faça login em
     `POST /auth/login` com um e-mail e senha cadastrados, copie o `token` retornado e clique em
-    **Authorize** no topo desta página, informando `Bearer <token>`. O administrador já vem
+    **Authorize** no topo desta página, informando apenas o valor de `token` (sem `Bearer`). O administrador já vem
     pré-cadastrado no banco em memória (veja o README do projeto para as credenciais de
     demonstração) — não existe endpoint de cadastro de administrador.
   version: 1.0.0
