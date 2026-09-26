@@ -9,23 +9,23 @@ import {
 
 export const listar = asyncHandler(async (req, res) => {
   const { alunoId, disciplinaId } = req.query;
-  res.json(await listarService({ alunoId, disciplinaId }));
+  res.json(listarService({ alunoId, disciplinaId }));
 });
 
 export const buscarPorId = asyncHandler(async (req, res) => {
-  res.json(await buscarPorIdService(req.params.id));
+  res.json(buscarPorIdService(req.params.id));
 });
 
 export const criar = asyncHandler(async (req, res) => {
-  const nota = await criarService(req.body);
+  const nota = criarService(req.body);
   res.status(201).json(nota);
 });
 
 export const atualizar = asyncHandler(async (req, res) => {
-  res.json(await atualizarService(req.params.id, req.body));
+  res.json(atualizarService(req.params.id, req.body));
 });
 
 export const remover = asyncHandler(async (req, res) => {
-  await removerService(req.params.id);
+  removerService(req.params.id);
   res.status(204).send();
 });

@@ -1,13 +1,37 @@
-import mongoose from 'mongoose';
+const store = {
+  administradores: [],
+  alunos: [],
+  disciplinas: [],
+  matriculas: [],
+  notas: [],
+  trabalhos: [],
+};
 
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/gestao-de-alunos';
+function all(collection) {
+  return store[collection];
+}
 
-mongoose.connection.on('error', (err) => {
-  console.error('Erro de conexão com o MongoDB:', err.message);
-});
+function findById(collection, id) {
+  return store[collection].find((item) => item.id === id);
+}
 
-await mongoose.connect(MONGODB_URI);
+function insert(collection, item) {
+  store[collection].push(item);
+  return item;
+}
 
-console.log(`MongoDB conectado em ${MONGODB_URI}`);
+function update(collection, id, changes) {
+  const item = findById(collection, id);
+  if (!item) return null;
+  Object.assign(item, changes, { updatedAt: new Date().toISOString() });
+  return item;
+}
 
-export default mongoose;
+function remove(collection, id) {
+  const index = store[collection].findIndex((item) => item.id === id);
+  if (index === -1) return false;
+  store[collection].splice(index, 1);
+  return true;
+}
+
+export default { store, all, findById, insert, update, remove };

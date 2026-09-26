@@ -11,11 +11,11 @@ import {
 import { sanitizeAluno } from '../models/aluno.model.js';
 
 export const listar = asyncHandler(async (req, res) => {
-  res.json((await listarService()).map(sanitizeAluno));
+  res.json(listarService().map(sanitizeAluno));
 });
 
 export const buscarPorId = asyncHandler(async (req, res) => {
-  res.json(sanitizeAluno(await buscarPorIdService(req.params.id)));
+  res.json(sanitizeAluno(buscarPorIdService(req.params.id)));
 });
 
 export const criar = asyncHandler(async (req, res) => {
@@ -28,14 +28,14 @@ export const atualizar = asyncHandler(async (req, res) => {
 });
 
 export const remover = asyncHandler(async (req, res) => {
-  await removerService(req.params.id);
+  removerService(req.params.id);
   res.status(204).send();
 });
 
 export const listarDisciplinas = asyncHandler(async (req, res) => {
-  res.json(await listarDisciplinasService(req.params.alunoId));
+  res.json(listarDisciplinasService(req.params.alunoId));
 });
 
 export const listarNotas = asyncHandler(async (req, res) => {
-  res.json(await listarNotasService(req.params.alunoId, req.query.disciplinaId));
+  res.json(listarNotasService(req.params.alunoId, req.query.disciplinaId));
 });
