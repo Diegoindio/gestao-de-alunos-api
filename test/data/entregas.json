@@ -1,0 +1,16 @@
+{
+  "cenarios": [
+    {
+      "descricao": "trabalho de Matemática",
+      "aluno": { "nome": "Aluno de Matemática", "senha": "senha-matematica" },
+      "disciplinaId": "disciplina-matematica",
+      "trabalho": { "titulo": "Exercícios de Álgebra", "descricao": "Resolução dos exercícios." }
+    },
+    {
+      "descricao": "trabalho de História",
+      "aluno": { "nome": "Aluno de História", "senha": "senha-historia" },
+      "disciplinaId": "disciplina-historia",
+      "trabalho": { "titulo": "Linha do Tempo", "descricao": "Pesquisa histórica." }
+    }
+  ]
+}

@@ -9,8 +9,8 @@ export async function comTokenDeAdmin() {
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
             .send({ 
-                    email: process.env.ADMIN_EMAIL, 
-                    senha: process.env.ADMIN_SENHA
+                    email: process.env.ADMIN_EMAIL || 'admin@escola.com',
+                    senha: process.env.ADMIN_SENHA || 'admin123'
             });
         
         tokenEmCache = loginResposta.body.token;
@@ -29,4 +29,12 @@ export async function getToken(emailUser, passUser) {
         });
 
     return loginResposta.body.token;
+}
+
+export async function loginAdmin() {
+    return getToken(process.env.ADMIN_EMAIL || 'admin@escola.com', process.env.ADMIN_SENHA || 'admin123');
+}
+
+export async function loginAluno(email, senha) {
+    return getToken(email, senha);
 }

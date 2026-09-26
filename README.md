@@ -78,6 +78,17 @@ docs/
 
 ## Instalação e execução
 
+Esta branch usa dados em memória: não exige instalar MongoDB. Copie `.env.example` para `.env`
+para ajustar `PORT` e `JWT_SECRET`; as credenciais de demonstração do administrador já constam
+no exemplo. O arquivo `.env` é ignorado pelo Git e carregado pelo Dotenv.
+
+Para executar a suíte completa, use `npm ci` e `npm test`. O SuperTest importa o app Express
+diretamente, então não é necessário iniciar `npm start` antes dos testes. Os cenários de
+`test/data/entregas.json` executam, cada um em um teste, login do administrador, cadastro e
+matrícula de aluno, login desse aluno e entrega do trabalho. Os dois logins são reutilizados
+como helpers em `test/helpers/auth.js`. O workflow em `.github/workflows/tests.yml` roda a
+mesma suíte em push e pull request.
+
 Pré-requisito: Node.js 18+ (usa `crypto.randomUUID`, disponível nativamente).
 
 ```bash

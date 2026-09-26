@@ -1,9 +1,9 @@
-import request from 'supertest';
 import { expect } from 'chai';
+import { api } from '../helpers/api.js';
 
 describe('Login', () => {
     it('deve retornar 200 quando o usuário e senha forem corretos', async () => {
-        const loginResposta = await request('http://localhost:3000')
+        const loginResposta = await api()
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
             .send({ 
@@ -15,7 +15,7 @@ describe('Login', () => {
     });
 
     it('deve retornar 400 quando a senha não for informada', async () => {
-        const loginResposta = await request('http://localhost:3000')
+        const loginResposta = await api()
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
             .send({ 
@@ -28,7 +28,7 @@ describe('Login', () => {
     });
 
     it('deve retornar 401 quando o usuário estiver correto mas a senha for incorreta', async () => {
-        const loginResposta = await request('http://localhost:3000')
+        const loginResposta = await api()
             .post('/api/auth/login')
             .set('Content-Type', 'application/json')
             .send({ 

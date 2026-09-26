@@ -1,6 +1,6 @@
-import request from 'supertest';
 import { expect } from 'chai';
 import { getToken } from '../helpers/auth.js';
+import { api } from '../helpers/api.js';
 
 
 describe('Login', () => {
@@ -11,7 +11,7 @@ describe('Login', () => {
     });
 
     it('deve negar o cadastro de um aluno quando ele já existe', async () => {
-        const cadastroAlunoResposta = await request('http://localhost:3000')
+        const cadastroAlunoResposta = await api()
             .post('/api/admin/alunos')
             .set('Content-Type', 'application/json')
             .set('Authorization', `Bearer ${token}`)
@@ -29,7 +29,7 @@ describe('Login', () => {
     });
 
     it('deve cadastrar um aluno quando ele informa dados válidos', async () => {
-        const cadastroAlunoResposta = await request('http://localhost:3000')
+        const cadastroAlunoResposta = await api()
             .post('/api/admin/alunos')
             .set('Content-Type', 'application/json')
             .set('Authorization', `Bearer ${token}`)

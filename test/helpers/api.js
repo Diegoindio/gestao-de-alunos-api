@@ -1,8 +1,6 @@
 import request from 'supertest';
-import 'dotenv/config';
-
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+import app from '../../src/app.js';
 
 export function api() {
-    return request(BASE_URL);
+    return request(app);
 }
