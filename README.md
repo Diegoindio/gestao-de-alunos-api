@@ -140,8 +140,8 @@ exceto `POST /api/auth/login`.
      -H "Authorization: Bearer <token>"
    ```
 
-No Swagger UI (`/api-docs`), clique em **Authorize** e informe `Bearer <token>` para testar as
-rotas protegidas diretamente pela interface.
+No Swagger UI (`/api-docs`), clique em **Authorize** e cole apenas o valor do `token`, sem
+`Bearer`. A interface adiciona o prefixo automaticamente nas requisições protegidas.
 
 ### Regras de autorização
 
